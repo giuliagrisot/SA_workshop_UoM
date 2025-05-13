@@ -11,7 +11,7 @@ Contents
 --------
 - slides/            – Workshop slides (PDF or HTML)
 - scripts/           – R scripts for hands-on exercises
-- data/              – Sample text files and datasets
+- scripts/data/              – Sample text files and datasets
 - outputs/           – Folder for saving your analysis results
 - resources/         – Supplementary materials and references
 

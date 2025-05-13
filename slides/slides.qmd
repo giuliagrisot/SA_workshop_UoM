@@ -1,0 +1,145 @@
+---
+title: Sentiment Analysis with R
+subtitle: Methods Fair @UoM
+format:
+  clean-revealjs:
+    # center: true
+    scrollable: true
+html-math-method:
+  method: mathjax
+  url: "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+author:
+  - name: Dr Giulia Grisot
+    email: giulia.grisot@manchester.ac.uk
+    affiliations: Lecturer in Digital Humanities, The University of Manchester
+# date: last-modified
+date: May 15, 2025
+bibliography: "/Users/user/Library/CloudStorage/OneDrive-Personal/Bibliography/library.bib"
+---
+
+## Today’s workshop - prerequisites
+
+- Basic understanding of R programming
+- Familiarity with text mining and natural language processing concepts
+- RStudio installed on your computer
+- Access to internet
+
+```{r}
+"~/OneDrive/Bibliography/library.bib"
+
+```
+
+# What is sentiment analysis?{background-color="#40666e" .center}
+
+Sentiment Analysis is a  __subfield of Natural Language Processing __ (NLP) that involves  __determining the emotional/sentiment value of a text__ .
+
+
+## What is sentiment analysis?
+
+Sentiment analysis can be used to:
+
+  - **understand human behaviour** in digital spaces
+  - **analyse texts** from books, social media, blogs, websites, and other digital platforms
+  - analyse **opinions** and cultural representations
+  - study the **evolution of language** and sentiment over time
+
+## Sentiment analysis is, in short, __the process of extracting the emotional value of a text__. {background-color="#40666e" .center}
+
+<small>
+not to be confused with the emotions the reader <span style="color:yellow;">may feel</span> when reading a text
+</small>
+
+##
+
+In its most simple form, it accounts for either  __positive__  or  __negative__  sentiment. However, more complex models can account for a wider range of  __emotions__ , such as joy, anger, sadness, and fear.
+
+
+![](https://theemotionallearner.com/wp-content/uploads/2021/08/emos.jpeg){fig-align="center" width=100}
+
+## Emotions/Sentiment Models {.columns}
+
+::: {.column width="33%"}
+![Plutchik wheel [@Plutchik1980]](img/plutchik.png)
+:::
+
+::: {.column width="33%"}
+
+![Ekman’s six basic emotions [@Ekman1992]](img/ekman.png)
+:::
+
+::: {.column width="33%"}
+![Russell’s circumplex model [@Russell1980]](img/russell.png)
+:::
+
+
+# So, How Does Sentiment Analysis Work? {background-color="#40666e"}
+
+## Lexicon-based SA
+
+Lexicon-based approaches use predefined word lists (lexicons) with assigned sentiment scores.
+
+Example:
+
+  - “This book is fantastic ! It tells wonderful and beautiful things…”
+  - “In those days, sadness shadowed my heart”
+
+
+## Lexicon-based SA
+
+Lexicon-based approaches use predefined word lists (lexicons) with assigned sentiment scores.
+
+Example:
+
+  - “This book is <span style="color:#ff0000">fantastic</span> ! It tells <span style="color:#ff0000">wonderful</span> and <span style="color:#ff0000">beautiful</span> things…”
+  - “In those days, <span style="color:#0070c0">sadness</span>  <span style="color:#0070c0">shadowed</span> my heart”
+
+
+### Strengths and limitations
+
+- Strengths: Simple, interpretable, no training required.
+- Limitations: Struggles with negation, sarcasm, and context.
+
+
+##
+
+![](img/SA_lists.png)
+
+
+## Other SA methods
+- **Rule-based SA**: Uses hand-crafted rules to identify sentiment.
+- **Machine Learning-based SA**: Uses labeled datasets to train models for sentiment classification.
+- **Deep Learning-based SA**: Uses neural networks (e.g., RNNs, LSTMs, Transformers) to model sentiment.
+- **Aspect-based SA**: Extracts sentiment related to specific aspects of a text.
+
+
+## Multiple SA Applications
+
+- **SA for the study of historical texts**: Sprugnoli et al., _Towards sentiment analysis for historical texts_ [-@Sprugnoli2016].
+- **SA and cognitive studies**: Jacobs et al., _What’s in the brain that ink may character_ [-@Jacobs2017].
+- **SA for political discourse**: Thakur, _Sentiment analysis of the public discourse on Twitter about COVID-19_ [-@Thakur2023].
+- **SA in literary studies**: Reagan et al., _The emotional arcs of stories are dominated by six basic shapes_ [-@Reagan2016].
+
+
+## SA Critical Aspects {.columns}
+
+::: {.column width="50%"}
+**Subjectivity**: SA may struggle with nuanced or ambiguous language
+
+**Ambiguity and Polysemy**: Words with multiple meanings can lead to misinterpretations.
+
+**Irony and Sarcasm**: Algorithms may fail to detect sarcasm or irony.
+
+**Context Sensitivity**: Sentiment analysis can fail to account for broader context.
+:::
+
+::: {.column width="50%"}
+**Data Bias**: Models trained on biased data may not generalize well.
+
+**Domain Specificity**: Models trained on general datasets may need to be fine-tuned for domain-specific accuracy.
+
+**Temporal Dynamics**: Sentiment can evolve over time, and static models may miss these changes.
+:::
+
+## References
+
+

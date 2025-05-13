@@ -1,0 +1,120 @@
+---
+title: "SA_my_corpus"
+output: html_document
+---
+
+It's time to explore the sentiment analysis of your own corpus!
+
+Can you create a small corpus with texts that are pertinent to your research?
+Can you perform a sentiment analysis on them?
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = F,
+  warning = FALSE, 
+  message = FALSE, 
+  fig.width = 6,
+  fig.height = 4)
+
+# Let's also clear the environment
+rm(list = ls())
+```
+
+
+Ok, now let's start by creating your corpus. You will see that in the folder 'scripts' there is an empty folder called 'my_corpus'. If you have brought your own texts, you can put them in there. If you don't have any texts, you can use the ones provided in the folder 'corpus_sample'.
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(readtext)
+```
+
+# Read in the text files
+
+```{r}
+# Read in the text files
+my_corpus <- readtext("my_corpus/") # this will work only if you have put your own texts in the folder 'my_corpus'
+
+# If you want to use the sample corpus, uncomment the line below
+# my_corpus <- readtext("corpus_sample/")
+
+# Check the structure of the corpus
+str(my_corpus)
+```
+
+## Check the first few rows of the corpus
+
+```{r}
+
+# Check the first few rows of the corpus
+head(my_corpus)
+
+# Check the number of documents
+nrow(my_corpus)
+
+# Check the number of words in each document
+my_corpus %>%
+  unnest_tokens(word, text) %>%
+  group_by(doc_id) %>%
+  summarise(num_words = n()) %>%
+  arrange(desc(num_words))
+```
+
+## Tokenize the text
+
+```{r}
+# Tokenize the text
+
+my_corpus_tok <- my_corpus %>%
+  unnest_paragraphs(input = text, output = paragraph, to_lower = F, drop = T) %>%
+  mutate(paragraph = str_replace_all(paragraph, "\\n", " ")) %>%
+  group_by(doc_id) %>%
+  mutate(paragraph_id = seq_along(paragraph)) %>%
+  ungroup() %>%
+  mutate(paragraph = str_squish(paragraph)) %>%
+  mutate(paragraph = str_trim(paragraph)) %>%
+  unnest_sentences(input = paragraph, output = sentence, to_lower = F) %>%
+  group_by(doc_id) %>%
+  mutate(sentence_id = seq_along(sentence)) %>%
+  ungroup() %>%
+  unnest_tokens(input = sentence, output = token, to_lower = F) %>%
+  group_by(doc_id) %>%
+  mutate(token_id = seq_along(token)) %>%
+  ungroup()
+  
+  
+
+# Check the first few rows of the tokenized corpus
+head(my_corpus_tokens)
+
+```
+
+
+## Let's create the sentiment lexicons
+
+```{r}
+
+# Can you find the code chunk that does this in the previous script and paste its content here?
+
+```
+
+
+## Sentiment analysis
+
+Use the script SA_participants.Rmd as a reference to perform the sentiment analysis on your own corpus.
+
+```{r}
+# Can you find the code chunk that combines the corpus with the sentiment lexicons?
+# Remember: this time we are using the dataframe 'my_corpus_tokens' instead of 'gotTwitter_sample': you can substitute it in the code chunk you found in the previous script using Ctrl+F and inserting the strings you want to find and replace.
+
+
+
+```
+
+
+## Visualise the results
+
+```{r}
+# Can you create a bar plot of the sentiment scores for each document in your corpus?
+
+```
