@@ -1,6 +1,6 @@
 ---
 title: Sentiment Analysis with R
-subtitle: Methods Fair @UoM
+subtitle: "Methods Fair - UoM"
 format:
   clean-revealjs:
     # center: true
@@ -24,10 +24,6 @@ bibliography: "/Users/user/Library/CloudStorage/OneDrive-Personal/Bibliography/l
 - RStudio installed on your computer
 - Access to internet
 
-```{r}
-"~/OneDrive/Bibliography/library.bib"
-
-```
 
 # What is sentiment analysis?{background-color="#40666e" .center}
 
