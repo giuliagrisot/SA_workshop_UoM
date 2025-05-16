@@ -33,10 +33,10 @@ library(readtext)
 
 ```{r}
 # Read in the text files
-my_corpus <- readtext("my_corpus/") # this will work only if you have put your own texts in the folder 'my_corpus'
+# my_corpus <- readtext("my_corpus/") # this will work only if you have put your own texts in the folder 'my_corpus'
 
 # If you want to use the sample corpus, uncomment the line below
-# my_corpus <- readtext("corpus_sample/")
+my_corpus <- readtext("corpus_sample/")
 
 # Check the structure of the corpus
 str(my_corpus)
@@ -77,7 +77,7 @@ my_corpus_tok <- my_corpus %>%
   group_by(doc_id) %>%
   mutate(sentence_id = seq_along(sentence)) %>%
   ungroup() %>%
-  unnest_tokens(input = sentence, output = token, to_lower = F) %>%
+  unnest_tokens(input = sentence, output = token) %>%
   group_by(doc_id) %>%
   mutate(token_id = seq_along(token)) %>%
   ungroup()

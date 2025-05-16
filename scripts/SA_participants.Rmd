@@ -79,6 +79,7 @@ In our directory, we have a small version of the original dataset, a collection 
 
 Let's start by loading the tweets from the dataset.
 
+
 ```{r}
 
 # In this chunk you can see how I imported and reduced the dataset (you can download the original dataset from the link above and uncomment. the following to repeat the operation with your desired number of tweets)
